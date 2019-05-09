@@ -1,0 +1,24 @@
+try
+    {
+          String myDriver = "com.mysql.jdbc.Driver";
+          String db = "jdbc:mysql://localhost/DBName";
+          Class.forName(myDriver);
+          Connection conn = DriverManager.getConnection(db, "root", "");
+ 
+          String sorgu = "SELECT * FROM movies";
+          
+          Statement st = conn.createStatement();         
+          ResultSet rs = st.executeQuery(sorgu);
+ 
+          while (rs.next())
+          {
+                   System.out.println(rs.getString("name"));
+                   System.out.println(rs.getString("genre"));
+          }
+          st.close();
+    }       
+    catch (Exception a)
+    {
+      System.err.println("Hata ! ");
+      System.err.println(a.getMessage());
+    }
